@@ -1,0 +1,22 @@
+
+Before release:
+
+- Add record display
+- Add error checking
+- Write web page
+- Post to PalmGear, etc.
+
+Future:
+
+- Handle multiple cards in memory and databases
+- Remove labels and fields in forms
+- Combine device, display, battery form handlers 
+- Add search for databases
+- Add filter menu to database list
+- Add model detection
+- Add heap operations menu
+- Add database & record deletion, editing
+- Scroll heap table
+- Scroll on PalmOS 1.0 devices
+- Make database list into table
+- Display app-info and sort-info blocks

@@ -1,0 +1,206 @@
+// Copyright 2002 Ian Burrell
+// Author: Ian Burrell <iburrell@znark.com>
+
+#include "internals.h"
+
+version "1.0"
+
+icon "internals.bmp"
+
+menu id CommonMenuBar
+begin
+    pulldown "Options"
+    begin
+        menuitem "About" id OptionsAboutMenu 
+    end
+end
+
+
+alert id AboutBoxAlert
+information
+begin
+    title "About Internals"
+    message "Version 1.0\nby Ian Burrell\niburrell@znark.com\nhttp://www.znark.com/palm/Internals/"
+    buttons "Done"
+end
+
+
+form id MainForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Internals"
+    button "Device" id DeviceButton at (1 20 auto auto)
+    button "Display" id DisplayButton at (prevleft prevbottom+5 auto auto)
+    button "Battery" id BatteryButton at (prevleft prevbottom+5 auto auto)
+    button "Memory" id MemoryButton at (prevleft prevbottom+5 auto auto)
+    button "Databases" id DatabaseButton at (prevleft prevbottom+5 auto auto)
+end
+
+
+form id DeviceForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Device"
+
+    label "OS Version: " autoid at (1 20)
+    field id DeviceVersionField at (prevright+2 prevtop 80 auto) noneditable 
+
+    label "Processor: " autoid at (1 prevbottom+1)    
+    field id DeviceProcessorField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Serial Number: " autoid at (1 prevbottom+1)
+    field id DeviceSerialNumberField at (prevright+2 prevtop 100 auto) noneditable
+
+    button "Done" id DeviceDoneButton at (1 147 auto auto) 
+end
+
+
+form id DisplayForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Display"
+
+    label "Size: " autoid at (1 20)
+    field id DisplaySizeField at (prevright+2 prevtop 100 auto) noneditable
+        
+    label "Color: " autoid at (1 prevbottom+1)
+    field id DisplayColorField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Current Depth:" autoid at (1 prevbottom+1)
+    field id DisplayDepthField at (prevright+2 prevtop 100 auto) noneditable
+
+    button "Done" id DisplayDoneButton at (1 147 auto auto) 
+end
+
+
+form id BatteryForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Battery"
+
+    label "Type: " autoid at (1 20)
+    field id BatteryTypeField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Voltage: " autoid at (1 prevbottom+1)
+    field id BatteryVoltageField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Warning Threshold: " autoid at (1 prevbottom+1)
+    field id BatteryWarningField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Critical Threshold: " autoid at (1 prevbottom+1)
+    field id BatteryCriticalField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Percent: " autoid at (1 prevbottom+1)
+    field id BatteryPercentField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Plugged In: " autoid at (1 prevbottom+1)
+    field id BatteryPluggedInField at (prevright+2 prevtop 100 auto) noneditable
+
+    button "Done" id BatteryDoneButton at (1 147 auto auto)
+end
+
+
+form id MemoryForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Memory"
+
+    label "Card: 0" autoid at (1 20)
+
+    label "Name: " autoid at (1 prevbottom+1)
+    field id MemoryNameField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Manufacturer: " autoid at (1 prevbottom+1)
+    field id MemoryManfField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Created: " autoid at (1 prevbottom+1)
+    field id MemoryCreationField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "ROM Size: " autoid at (1 prevbottom+1)
+    field id MemoryROMSizeField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "RAM Size: " autoid at (1 prevbottom+1)
+    field id MemoryRAMSizeField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Free RAM: " autoid at (1 prevbottom+1)
+    field id MemoryFreeBytesField at (prevright+2 prevtop 100 auto) noneditable
+
+    button "Done" id MemoryDoneButton at (1 147 auto auto)
+    button "Heaps" id MemoryHeapButton at (prevright+2 prevtop auto auto)
+end
+
+
+form id DatabaseForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Databases"
+    list "" id DatabaseList at (1 30 158 110) disabled
+    button "Done" id DatabaseDoneButton at (1 147 auto auto)
+end
+
+
+form id HeapForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Heaps"
+    table id HeapTable at (0 30 150 110) rows 10 columns 3 columnwidths 70 40 40
+    button "Done" id HeapDoneButton at (1 147 auto auto)
+end
+
+
+form id InfoForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Database Info"
+
+    label "Name: " autoid at (1 20)
+    field id InfoNameField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Type: " autoid at (1 prevbottom+1)
+    field id InfoTypeField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Creator: " autoid at (1 prevbottom+1)
+    field id InfoCreatorField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Flags: " autoid at (1 prevbottom+1)
+    field id InfoFlagsField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Records: " autoid at (1 prevbottom+1)
+    field id InfoNumRecordsField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Total Size: " autoid at (1 prevbottom+1)
+    field id InfoTotalSizeField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Created: " autoid at (1 prevbottom+1)
+    field id InfoCreatedField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Modified: " autoid at (1 prevbottom+1)
+    field id InfoModifiedField at (prevright+2 prevtop 100 auto) noneditable
+
+    label "Last Backup: " autoid at (1 prevbottom+1)
+    field id InfoBackupedField at (prevright+2 prevtop 100 auto) noneditable
+
+    button "Done" id InfoDoneButton at (1 147 auto auto)
+    button "Records" id InfoRecordButton at (prevright+2 prevtop auto auto)
+end
+
+
+form id RecordForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Records"
+    table id RecordTable at (0 30 146 110) rows 10 columns 3 columnwidths 26 70 50
+    scrollbar id RecordScrollBar at (150 30 7 110)
+    button "Done" id RecordDoneButton at (1 147 auto auto)
+end
+
+
+form id DataForm at (0 0 160 160)
+menuid CommonMenuBar
+begin
+    title "Record"
+    
+    scrollbar id DataScrollBar at (150 20 7 120)
+    button "Done" id DataDoneButton at (1 147 auto auto)
+end
+
