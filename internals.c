@@ -540,9 +540,7 @@ static void HeapInitForm(FormPtr form)
     for (row = numHeaps; row < numRows; row++) {
         TblSetRowUsable(table, row, false);
     }
-
 }
-
 
 Boolean HeapFormHandler(EventPtr event)
 {
@@ -574,7 +572,6 @@ Boolean HeapFormHandler(EventPtr event)
 }
 
 // Database Form
-
 
 static void DatabaseDrawNumber(void)
 {
@@ -633,14 +630,6 @@ static void DatabaseInitForm(FormPtr form)
     }
 }
 
-/*
-static void DatabaseFreeList()
-{
-    MemPtrFree(dbNames[0]);
-    MemPtrFree(dbNames);
-}
-*/
-
 static void DatabaseSelect(UInt16 index)
 {
     dbIndex = index;
@@ -691,7 +680,6 @@ Boolean DatabaseFormHandler(EventPtr event)
 
 
 // Info Form
-
 
 static MemHandle MakeIntString(UInt32 num)
 {
@@ -1070,7 +1058,8 @@ Boolean RecordFormHandler(EventPtr event)
     return handled;
 }
 
-// Main Form
+
+// Data Form
 
 static void DataOpen(void)
 {
@@ -1189,7 +1178,6 @@ static void DataPageScroll(Boolean direction)
     DataScrollRows(scrollRows);
 }
  
-
 Boolean DataFormHandler(EventPtr event)
 {
     FormPtr form = FrmGetActiveForm();
@@ -1239,6 +1227,8 @@ Boolean DataFormHandler(EventPtr event)
     return handled;
 }
 
+
+// Main form
 
 // Remove buttons that can't be used
 static void MainInitForm(FormPtr form)
@@ -1374,7 +1364,6 @@ static Boolean AppHandleEvent(EventPtr event)
     return handled;
 }
 
-
 static void AppEventLoop(void)
 {
     UInt16 error;
@@ -1394,18 +1383,15 @@ static void AppEventLoop(void)
 
 }	// AppEventLoop
 
-
 static UInt16 AppStart(void)
 {
     return 0;
 }	
 
-
 static void AppStop(void)
 {
     FrmCloseAllForms();
 }
-
 
 UInt32 PilotMain(UInt16 cmd, MemPtr cmdPBP, UInt16 launchFlags)
 {
